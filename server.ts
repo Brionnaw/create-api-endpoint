@@ -1,20 +1,16 @@
 import express = require('express');
 let app = express();
-// chaining routes - condensing the route path into one line of code, changing the route methodss.//
+// route handler: handling functions within your route,  //
+  app.get('/:id', ((req, res, next) =>{ //next tells the function to go to the part of the process //
+    if(req.params){
+    console.log('success');
+  } else {
+    next();
+    }
+  }, function(req, res) {
 
-  app.route('/movies')
-    .get((req, res) => {
-    res.send('GET a movie');
-  })
-    .post((req, res) => {
-    res.send('POST a movie');
-  })
-    .put((req, res) => {
-    res.send('PUT a movie');
-  })
-    .delete((req, res) => {
-    res.send('DELETE a movie');
-  });
+    res.send('error, please include an id');
+  }));
 
 let server = app.listen(3000, function () {
   let port = server.address().port;
