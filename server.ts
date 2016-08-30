@@ -1,11 +1,8 @@
 import express = require('express');
 let app = express();
+ import movies = require('./movies');
+ app.use('/movies', movies); // express "use" is the movies file whenever make request to the endpoint
 
-  app.post('/movies/', (req, res) => {
-    console.log(req.body);
-    res.send(req.body);
-
-  })
 
 let server = app.listen(3000, function () {
   let port = server.address().port;
